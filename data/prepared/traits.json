@@ -1,0 +1,15 @@
+{
+  "trait_tokens": [
+    "<|trait:agreeableness-high|>",
+    "<|trait:agreeableness-low|>",
+    "<|trait:openness-high|>",
+    "<|trait:openness-low|>",
+    "<|trait:conscientiousness-high|>",
+    "<|trait:conscientiousness-low|>",
+    "<|trait:extraversion-high|>",
+    "<|trait:extraversion-low|>",
+    "<|trait:neuroticism-high|>",
+    "<|trait:neuroticism-low|>"
+  ],
+  "end_token": "<|traits_end|>"
+}
