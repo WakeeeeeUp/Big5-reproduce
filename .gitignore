@@ -1,0 +1,25 @@
+big5_chat_dataset.json
+.venv
+venv
+__pycache__
+config
+
+# checkpoints / training artifacts
+expert_ckpt*/
+**/checkpoint-*/
+*.pt
+*.bin
+*.safetensors
+optimizer.pt
+
+# data artifacts
+data/prepared/
+*.jsonl
+
+# misc
+.venv/
+.vscode/
+.DS_Store
+generations/
+old_runs/
+output.txt
