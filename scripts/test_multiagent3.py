@@ -34,8 +34,13 @@ model = PeftModel.from_pretrained(base_model, ADAPTER_DIR)
 # Simple text generation helper (single‑turn)
 def llm_generate(prompt: str, max_new_tokens: int = 384) -> str:
     inputs = tokenizer(prompt, return_tensors="pt")
+    input_len = inputs["input_ids"].shape[-1]
+
     outputs = model.generate(**inputs, max_new_tokens=max_new_tokens, do_sample=True)
-    return tokenizer.decode(outputs[0], skip_special_tokens=True)
+
+    gen_ids = outputs[0][input_len:]
+    return tokenizer.decode(gen_ids, skip_special_tokens=True).strip()
+
 
 # ============================
 # Types
@@ -141,6 +146,7 @@ class PeerGuidelineAgent:
     def run(self, user_input: str, motivational_text: str) -> str:
         role = """### SYSTEM ROLE
 You are the structural and goal‑setting component of the peer team. Keep collaboration efficient, focused, and goal‑directed. Ensure motivational content links back to specific learning tasks and objectives.
+Do not include any headings like SYSTEM ROLE / Task / Output Format in your reply.
 """
         prompt = f"""{role}
 ## Inputs
