@@ -25,7 +25,7 @@ Design principles from the spec:
 # Model loading (adapter)
 # ============================
 BASE_MODEL = "TinyLlama/TinyLlama-1.1B-Chat-v1.0"
-ADAPTER_DIR = "expert_ckpt/trait_cond_lora"
+ADAPTER_DIR = "Eden-D/trait_cond_lora"
 
 tokenizer = AutoTokenizer.from_pretrained(BASE_MODEL)
 base_model = AutoModelForCausalLM.from_pretrained(BASE_MODEL)
