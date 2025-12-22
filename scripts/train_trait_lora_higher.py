@@ -223,7 +223,6 @@ def main():
     # --------------------
     trainer = SFTTrainer(
         model=model,
-        tokenizer=tokenizer,
         train_dataset=ds,
         dataset_text_field=None,      # we use formatting_func instead
         formatting_func=formatting_func,
