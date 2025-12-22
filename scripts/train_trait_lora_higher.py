@@ -175,12 +175,10 @@ def main():
     ds = load_dataset("json", data_files=args.data_path, split="train")
 
     def formatting_func(examples):
-        texts = []
         eos = tokenizer.eos_token or ""
-        labels = examples.get("labels", [""] * len(examples["text"]))
-        for t, y in zip(examples["text"], labels):
-            texts.append((t or "") + (y or "") + eos)
-        return texts
+        text = examples.get("text", "")
+        label = examples.get("labels", "")
+        return (text or "") + (label or "") + eos
 
     # --------------------
     # LoRA config (PEFT)
