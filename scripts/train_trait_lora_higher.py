@@ -224,10 +224,7 @@ def main():
     trainer = SFTTrainer(
         model=model,
         train_dataset=ds,
-        dataset_text_field=None,      # we use formatting_func instead
         formatting_func=formatting_func,
-        max_seq_length=args.max_seq_length,
-        packing=False,
         args=training_args,
         peft_config=lora_cfg,
     )
