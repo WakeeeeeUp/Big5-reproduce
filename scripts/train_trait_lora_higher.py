@@ -23,15 +23,20 @@ from huggingface_hub import hf_hub_download
 
 
 DEFAULT_MODEL = "mistralai/Mistral-7B-v0.1"
-DEFAULT_DATA_PATH = "data/prepared/trait_cond_sft.jsonl"
 DEFAULT_OUT_DIR = "expert_ckpt_higher/trait_cond_lora"
-TRAITS_PATH = hf_hub_download(
-    repo_id="Eden-D/big5-traits/prepared",
-    filename="traits.json",
-    repo_type="dataset"
+REPO_ID = "Eden-D/big5-traits"
+
+DEFAULT_DATA_PATH = hf_hub_download(
+    repo_id=REPO_ID,
+    filename="data/prepared/trait_cond_sft.jsonl",
+    repo_type="dataset",
 )
 
-DEFAULT_TRAITS_JSON = TRAITS_PATH
+DEFAULT_TRAITS_JSON = hf_hub_download(
+    repo_id=REPO_ID,
+    filename="data/prepared/traits.json",
+    repo_type="dataset",
+)
 
 
 def _load_trait_tokens(traits_json_path: str):
